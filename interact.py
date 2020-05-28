@@ -141,6 +141,9 @@ def run():
         while not raw_text:
             print('Prompt should not be empty!')
             raw_text = input(">>> ")
+        if raw_text == "/q":
+            print('Quiting ...')
+            break
         history.append(tokenizer.encode(raw_text))
         with torch.no_grad():
             out_ids = sample_sequence(personality, history, tokenizer, model, args)
